@@ -26,12 +26,7 @@ export default function Video() {
             </button>
           )}
           {playVideo && (
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/aOq49euWnIo?controls=0&autoplay=1"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/gV_aehmIfus?si=8-mSnOexS2F9y4sm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           )}
         </div>
       </div>

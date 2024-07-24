@@ -13,43 +13,34 @@ export default function Testimonials() {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+              <Mark>Berbahagialah</Mark> kamu
+              jika karena Aku kamu dicela dan dianiaya dan kepadamu difitnahkan segala yang jahat
             </p>
-
-            <Avatar
-              image={userOneImg}
-              name="Sarah Steiner"
-              title="VP Sales at Google"
-            />
+            <p className="text-2xl leading-normal ">
+              <Mark>Matius  5:11</Mark> 
+            </p>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+              <p className="text-2xl leading-normal ">
+                  <Mark>Berbahagialah</Mark> kamu
+                  jika karena Aku kamu dicela dan dianiaya dan kepadamu difitnahkan segala yang jahat
+              </p>
+              <p className="text-2xl leading-normal ">
+                <Mark>Matius  5:11</Mark> 
+              </p>
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
+              <Mark>Berbahagialah</Mark> kamu
+              jika karena Aku kamu dicela dan dianiaya dan kepadamu difitnahkan segala yang jahat
             </p>
-
-            <Avatar
-              image={userTwoImg}
-              name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
-            />
-          </div>
-        </div>
-        <div className="">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I've seen. I
-              would use this for anything.
+              <Mark>Matius  5:11</Mark> 
             </p>
-
-            <Avatar
-              image={userThreeImg}
-              name="Gabrielle Winn"
-              title="Co-founder of Acme Inc"
-            />
           </div>
         </div>
       </div>

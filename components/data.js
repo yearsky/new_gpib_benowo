@@ -5,30 +5,56 @@ import {
   DeviceMobileIcon,
   AdjustmentsIcon,
   SunIcon,
+  NewspaperIcon
 } from "@heroicons/react/outline";
 
-import benefitOneImg from "../public/img/benefit-one.png";
+import benefitOneImg from "../public/img/announce.png";
 import benefitTwoImg from "../public/img/benefit-two.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Informasi Ibadah Sepekan",
+  desc: "",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
-      icon: <EmojiHappyIcon />,
+      title: "Ibadah Umum",
+      desc: "Hari Minggu: 09.00 WIB.",
+      icon: <NewspaperIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
-      icon: <ChartSquareBarIcon />,
+      title: "Ibadah Keluarga",
+      desc: "Hari Rabu: 19.00 WIB.",
+      icon: <NewspaperIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
-      icon: <CursorClickIcon />,
+      title: "Ibadah Pelkat PA",
+      desc: "Hari Minggu: 09.00 WIB.",
+      icon: <NewspaperIcon />,
+    },
+    {
+      title: "Ibadah Pelkat PT",
+      desc: "Hari Minggu: 09.00 WIB.",
+      icon: <NewspaperIcon />,
+    },
+    {
+      title: "Ibadah Pelkat GP",
+      desc: "Hari Minggu: 09:00 WIB.",
+      icon: <NewspaperIcon />,
+    },
+    {
+      title: "Ibadah Pelkat PKB",
+      desc: "Hari Kamis: 19.00 WIB.",
+      icon: <NewspaperIcon />,
+    },
+    {
+      title: "Ibadah Pelkat PKP",
+      desc: "Hari Selasa: 19.00 WIB.",
+      icon: <NewspaperIcon />,
+    },
+    {
+      title: "Ibadah Pelkat PKLU",
+      desc: "Hari Senin: 19.00 WIB.",
+      icon: <NewspaperIcon />,
     },
   ],
 };
