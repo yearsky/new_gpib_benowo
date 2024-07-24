@@ -1,17 +1,82 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Container from "./container";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import CustomDot from "./customDots"; // Import the custom dot component
 
 export default function Benefits(props) {
   const { data } = props;
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [oldSlide, setOldSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide2, setActiveSlide2] = useState(0);
+
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    vertical: true,
+    appendDots: (dots) => (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "10px",
+        }}
+      >
+        {dots}
+      </div>
+    ),
+    customPaging: (i) => (
+      <CustomDot index={i} activeSlide={oldSlide} oldSlide={oldSlide} />
+    ),
+    beforeChange: (current, next) => {
+      setOldSlide(current);
+      setActiveSlide(next);
+    },
+    afterChange: current => setActiveSlide2(current),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: false,
+          vertical: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <>
       <Container className="flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap ">
         <div
           className={`flex items-center justify-center w-full lg:w-1/2 ${
             props.imgPos === "right" ? "lg:order-1" : ""
-          }`}>
+          }`}
+        >
           <div>
             <Image
               src={data.image}
@@ -27,7 +92,8 @@ export default function Benefits(props) {
         <div
           className={`flex flex-wrap items-center w-full lg:w-1/2 ${
             props.imgPos === "right" ? "lg:justify-end" : ""
-          }`}>
+          }`}
+        >
           <div>
             <div className="flex flex-col w-full mt-4">
               <h3 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white">
@@ -40,11 +106,13 @@ export default function Benefits(props) {
             </div>
 
             <div className="w-full mt-5">
-              {data.bullets.map((item, index) => (
-                <Benefit key={index} title={item.title} icon={item.icon}>
-                  {item.desc}
-                </Benefit>
-              ))}
+              <Slider {...settings}>
+                {data.bullets.map((item, index) => (
+                  <Benefit key={index} title={item.title} icon={item.icon}>
+                    {item.desc}
+                  </Benefit>
+                ))}
+              </Slider>
             </div>
           </div>
         </div>

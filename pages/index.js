@@ -8,23 +8,32 @@ import Video from "../components/video";
 import Benefits from "../components/benefits";
 import Footer from "../components/footer";
 import Testimonials from "../components/testimonials";
-import Cta from "../components/cta";
-import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
 
-//import dynamic from "next/dynamic";
+import { db } from "../config/firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 
-// const Video = dynamic(() => import("../components/video"));
+export async function getServerSideProps() {
+  const docRef = doc(db, "about", "zzzzzzzzzzzzzzzzzzzy");
+  const docSnap = await getDoc(docRef);
 
-// const Benefits = dynamic(() => import("../components/benefits"));
-// const Footer = dynamic(() => import("../components/footer"));
-// const Testimonials = dynamic(() => import("../components/testimonials"));
-// const Cta = dynamic(() => import("../components/cta"));
-// const Faq = dynamic(() => import("../components/faq"));
+  let logoURL = '';
 
-// const PopupWidget = dynamic(() => import("../components/popupWidget"));
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    if (data.logo && data.logo.length > 0) {
+      logoURL = data.logo[0].downloadURL;
+    }
+  }
 
-export default function Home() {
+  return {
+    props: {
+      logoURL,
+    },
+  };
+}
+
+export default function Home({logoURL}) {
   return (
     <>
       <Head>
@@ -33,10 +42,10 @@ export default function Home() {
           name="description"
           content="Website Resmi Jemaat GPIB Benowo Surabaya"
         />
-        <link rel="icon" href="/church.png" />
+        <link rel="icon" href={logoURL} />
       </Head>
 
-      <Navbar />
+      <Navbar logoURL={logoURL} />
       <Hero />
       <SectionTitle
         pretitle="Informasi"
@@ -60,7 +69,7 @@ export default function Home() {
       </SectionTitle> */}
       {/* <Faq /> */}
       {/* <Cta /> */}
-      <Footer />
+      <Footer logoURL={logoURL} />
       <PopupWidget />
     </>
   );

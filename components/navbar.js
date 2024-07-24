@@ -2,7 +2,7 @@ import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import { Disclosure } from "@headlessui/react";
 
-export default function Navbar() {
+export default function Navbar({logoURL}) {
   const navigation = ["Home","Tentang Kami","Pelkat","Komisi", "Galeri", "Warta Jemaat"];
 
   return (
@@ -17,7 +17,7 @@ export default function Navbar() {
                   <a className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
                     <span>
                       <img
-                        src="/church.png"
+                        src={logoURL}
                         alt="N"
                         width="32"
                         height="32"
