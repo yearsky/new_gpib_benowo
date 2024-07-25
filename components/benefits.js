@@ -1,3 +1,4 @@
+// Benefits.js
 import Image from "next/image";
 import React, { useState } from "react";
 import Container from "./container";
@@ -12,8 +13,6 @@ export default function Benefits(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [oldSlide, setOldSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [activeSlide2, setActiveSlide2] = useState(0);
-
 
   const settings = {
     dots: true,
@@ -34,19 +33,18 @@ export default function Benefits(props) {
       </div>
     ),
     customPaging: (i) => (
-      <CustomDot index={i} activeSlide={oldSlide} oldSlide={oldSlide} />
+      <CustomDot index={i} activeSlide={Math.floor(activeSlide / 4)} oldSlide={oldSlide} />
     ),
     beforeChange: (current, next) => {
       setOldSlide(current);
       setActiveSlide(next);
     },
-    afterChange: current => setActiveSlide2(current),
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 4,
           infinite: false,
           vertical: true,
           dots: true,
@@ -55,20 +53,21 @@ export default function Benefits(props) {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           initialSlide: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
     ],
   };
+
   return (
     <>
       <Container className="flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap ">
