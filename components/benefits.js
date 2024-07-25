@@ -1,23 +1,37 @@
 // Benefits.js
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Container from "./container";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CustomDot from "./customDots"; // Import the custom dot component
+import announceImg from "../public/img/announce.png";
+import { db } from "../config/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+import { NewspaperIcon } from "@heroicons/react/outline";
 
 export default function Benefits(props) {
-  const { data } = props;
+  const [data, setData] = useState([]);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [oldSlide, setOldSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "ibadah"));
+      const fetchedData = querySnapshot.docs.map(doc => doc.data());
+      setData(fetchedData);
+    };
+    fetchData();
+  }, []);
+
   const settings = {
     dots: true,
-    infinite: false,
-    speed: 500,
+    infinite: true,
+    speed: 2500,
+    autoplay:true,
     slidesToShow: 4,
     slidesToScroll: 4,
     vertical: true,
@@ -45,7 +59,7 @@ export default function Benefits(props) {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          infinite: false,
+          infinite: true,
           vertical: true,
           dots: true,
         },
@@ -54,8 +68,8 @@ export default function Benefits(props) {
         breakpoint: 600,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 2,
+          slidesToScroll: 1,
+          dots:false
         },
       },
       {
@@ -63,6 +77,7 @@ export default function Benefits(props) {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
+          dots:true
         },
       },
     ],
@@ -78,7 +93,7 @@ export default function Benefits(props) {
         >
           <div>
             <Image
-              src={data.image}
+              src={announceImg}
               width="521"
               height="482"
               alt="Benefits"
@@ -106,9 +121,13 @@ export default function Benefits(props) {
 
             <div className="w-full mt-5">
               <Slider {...settings}>
-                {data.bullets.map((item, index) => (
-                  <Benefit key={index} title={item.title} icon={item.icon}>
-                    {item.desc}
+              {data.map((item, index) => (
+                  <Benefit
+                    key={index}
+                    title={item.type}
+                    icon={item.logo ? <img src={item.logo[0].downloadURL} alt={item.type} /> : <NewspaperIcon />}
+                  >
+                    {item.times}
                   </Benefit>
                 ))}
               </Slider>

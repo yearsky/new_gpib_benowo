@@ -48,7 +48,7 @@ export default function Home({logoURL}) {
       <Navbar logoURL={logoURL} />
       <Hero />
       <SectionTitle
-        pretitle="Informasi"
+        pretitle="Informasi Ibadah Rutin"
         title=" ">
       </SectionTitle>
       <Benefits data={benefitOne} />
