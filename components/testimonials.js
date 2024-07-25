@@ -16,7 +16,7 @@ export default function Testimonials() {
     };
     fetchData();
   }, []);
-console.log(data)
+
 
   return (
     <Container>

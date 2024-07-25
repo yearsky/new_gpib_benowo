@@ -12,6 +12,7 @@ import PopupWidget from "../components/popupWidget";
 
 import { db } from "../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import Container from "../components/container";
 
 export async function getServerSideProps() {
   const docRef = doc(db, "about", "zzzzzzzzzzzzzzzzzzzy");
@@ -36,6 +37,7 @@ export async function getServerSideProps() {
 export default function Home({logoURL}) {
   return (
     <>
+    
       <Head>
         <title>GPIB Benowo Surabaya</title>
         <meta
@@ -44,7 +46,7 @@ export default function Home({logoURL}) {
         />
         <link rel="icon" href={logoURL} />
       </Head>
-
+      <div className="p-10">
       <Navbar logoURL={logoURL} />
       <Hero />
       <SectionTitle
@@ -71,6 +73,7 @@ export default function Home({logoURL}) {
       {/* <Cta /> */}
       <Footer logoURL={logoURL} />
       <PopupWidget />
+      </div>
     </>
   );
 }
