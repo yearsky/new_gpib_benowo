@@ -38,7 +38,7 @@ export async function getServerSideProps() {
 export default function Home({logoURL}) {
   return (
     <>
-    
+      <Analytics />
       <Head>
         <title>GPIB Benowo Surabaya</title>
         <meta
