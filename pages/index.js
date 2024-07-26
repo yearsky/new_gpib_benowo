@@ -13,6 +13,7 @@ import PopupWidget from "../components/popupWidget";
 import { db } from "../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import Container from "../components/container";
+import { Analytics } from "@vercel/analytics/react"
 
 export async function getServerSideProps() {
   const docRef = doc(db, "about", "n7dovn7LdvUaSNjdmd6k");
