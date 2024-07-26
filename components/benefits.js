@@ -20,7 +20,7 @@ export default function Benefits(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "ibadah"));
+      const querySnapshot = await getDocs(collection(db, "Ibadah"));
       const fetchedData = querySnapshot.docs.map(doc => doc.data());
       setData(fetchedData);
     };

@@ -15,7 +15,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Container from "../components/container";
 
 export async function getServerSideProps() {
-  const docRef = doc(db, "about", "zzzzzzzzzzzzzzzzzzzy");
+  const docRef = doc(db, "about", "n7dovn7LdvUaSNjdmd6k");
   const docSnap = await getDoc(docRef);
 
   let logoURL = '';
