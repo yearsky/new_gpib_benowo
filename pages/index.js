@@ -13,8 +13,6 @@ import PopupWidget from "../components/popupWidget";
 import { db } from "../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import Container from "../components/container";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export async function getServerSideProps() {
   const docRef = doc(db, "about", "n7dovn7LdvUaSNjdmd6k");
@@ -39,8 +37,6 @@ export async function getServerSideProps() {
 export default function Home({logoURL}) {
   return (
     <>
-      <SpeedInsights/>
-      <Analytics />
       <Head>
         <title>GPIB Benowo Surabaya</title>
         <meta
