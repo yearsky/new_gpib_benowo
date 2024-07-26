@@ -1,18 +1,15 @@
-import Head from "next/head";
-import Hero from "../components/hero";
-import Navbar from "../components/navbar";
-import SectionTitle from "../components/sectionTitle";
+// pages/index.js
 
 import { benefitOne, benefitTwo } from "../components/data";
 import Video from "../components/video";
 import Benefits from "../components/benefits";
-import Footer from "../components/footer";
+import SectionTitle from "../components/sectionTitle";
 import Testimonials from "../components/testimonials";
-import PopupWidget from "../components/popupWidget";
-
 import { db } from "../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-import Container from "../components/container";
+import Layout from "../components/Layout";
+import Hero from "../components/hero";
+
 
 export async function getServerSideProps() {
   const docRef = doc(db, "about", "n7dovn7LdvUaSNjdmd6k");
@@ -34,35 +31,25 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({logoURL}) {
+export default function Home({ logoURL }) {
   return (
-    <>
-      <Head>
-        <title>GPIB Benowo Surabaya</title>
-        <meta
-          name="description"
-          content="Website Resmi Jemaat GPIB Benowo Surabaya"
-        />
-        <link rel="icon" href={logoURL} />
-      </Head>
-      <div className="p-10">
-      <Navbar logoURL={logoURL} />
+    <Layout logoURL={logoURL}>
       <Hero />
       <SectionTitle
         pretitle="Informasi Ibadah Rutin"
-        title=" ">
-      </SectionTitle>
+        title=" "
+      />
       <Benefits data={benefitOne} />
       {/* <Benefits imgPos="right" data={benefitTwo} /> */}
       <SectionTitle
         pretitle="Video Khotbah Terbaru"
-        title="Roh Kudus Mengubah Kehidupan">
-      </SectionTitle>
+        title="Roh Kudus Mengubah Kehidupan"
+      />
       <Video />
       <SectionTitle
         pretitle="Renungan"
-        title="">
-      </SectionTitle>
+        title=""
+      />
       <Testimonials />
       {/* <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
         Answer your customers possible questions here, it will increase the
@@ -70,9 +57,6 @@ export default function Home({logoURL}) {
       </SectionTitle> */}
       {/* <Faq /> */}
       {/* <Cta /> */}
-      <Footer logoURL={logoURL} />
-      <PopupWidget />
-      </div>
-      </>
+    </Layout>
   );
 }
