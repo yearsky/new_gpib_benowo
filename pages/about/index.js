@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { db } from "../../config/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 import Mark from "../../components/mark";
 
 export async function getServerSideProps() {
